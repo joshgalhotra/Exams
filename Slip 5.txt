@@ -1,0 +1,135 @@
+Q1) Write a program to define a class Account having members custname, 
+accno. Define default and parameterized constructor. Create a subclass 
+called SavingAccount with members savingbal, minbal. Create a derived 
+class AccountDetail that extends the class SavingAccount with members, 
+depositamt and withdrawalamt. Write a appropriate method to display 
+customer details.
+
+
+class Account
+{
+    String custname;
+    int accno;
+
+    // Default constructor
+    Account()
+    {
+        custname = "Unknown";
+        accno = 0;
+    }
+
+    // Parameterized constructor
+    Account(String name, int no)
+    {
+        custname = name;
+        accno = no;
+    }
+}
+
+class SavingAccount extends Account
+{
+    double savingbal;
+    double minbal;
+
+    SavingAccount(String name, int no, double bal, double min)
+    {
+        super(name, no);
+        savingbal = bal;
+        minbal = min;
+    }
+}
+
+class AccountDetail extends SavingAccount
+{
+    double depositamt;
+    double withdrawalamt;
+
+    AccountDetail(String name, int no, double bal,
+                  double min, double dep, double withdraw)
+    {
+        super(name, no, bal, min);
+        depositamt = dep;
+        withdrawalamt = withdraw;
+    }
+
+    void display()
+    {
+        System.out.println("Customer Name: " + custname);
+        System.out.println("Account Number: " + accno);
+        System.out.println("Saving Balance: " + savingbal);
+        System.out.println("Minimum Balance: " + minbal);
+        System.out.println("Deposit Amount: " + depositamt);
+        System.out.println("Withdrawal Amount: " + withdrawalamt);
+    }
+}
+
+class TestAccount
+{
+    public static void main(String args[])
+    {
+        AccountDetail a = new AccountDetail(
+            "Sangram", 101, 10000, 1000, 5000, 2000
+        );
+
+        a.display();
+    }
+}
+
+
+
+
+
+
+Q2) Create a webpage containing a button and link. Change their appearance 
+when the mouse pointer moves over them. (Use :hover Pseudo-Class)
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hover Effect</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+
+        a {
+            margin-left: 20px;
+            color: blue;
+            text-decoration: none;
+        }
+
+        /* Hover Effect */
+        button:hover {
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Mouse Hover Example</h1>
+
+    <button>Click Me</button>
+
+    <a href="#">Visit Website</a>
+
+</body>
+</html>

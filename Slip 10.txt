@@ -1,0 +1,142 @@
+Q1) Write a program to create a super class Vehicle having members 
+Company and price. Derive two different classes LightMotorVehicle 
+(mileage) and HeavyMotorVehicle (capacity_in_tons). Accept the 
+information for "n" vehicles and display the information in appropriate 
+form. While taking data, ask user about the type of vehicle first.
+
+
+import java.util.*;
+
+class Vehicle
+{
+    String Company;
+    double price;
+
+    void getVehicle()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Company: ");
+        Company = sc.next();
+
+        System.out.print("Enter Price: ");
+        price = sc.nextDouble();
+    }
+
+    void display()
+    {
+        System.out.println("Company : " + Company);
+        System.out.println("Price   : " + price);
+    }
+}
+
+class LightMotorVehicle extends Vehicle
+{
+    double mileage;
+
+    void getLight()
+    {
+        Scanner sc = new Scanner(System.in);
+        getVehicle();
+
+        System.out.print("Enter Mileage: ");
+        mileage = sc.nextDouble();
+    }
+
+    void display()
+    {
+        super.display();
+        System.out.println("Mileage : " + mileage);
+    }
+}
+
+class HeavyMotorVehicle extends Vehicle
+{
+    double capacity_in_tons;
+
+    void getHeavy()
+    {
+        Scanner sc = new Scanner(System.in);
+        getVehicle();
+
+        System.out.print("Enter Capacity in Tons: ");
+        capacity_in_tons = sc.nextDouble();
+    }
+
+    void display()
+    {
+        super.display();
+        System.out.println("Capacity in Tons : " + capacity_in_tons);
+    }
+}
+
+class VehicleDemo
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of vehicles: ");
+        int n = sc.nextInt();
+
+        for(int i = 1; i <= n; i++)
+        {
+            System.out.println("\nVehicle " + i);
+            System.out.println("1. Light Motor Vehicle");
+            System.out.println("2. Heavy Motor Vehicle");
+            System.out.print("Enter vehicle type: ");
+            int ch = sc.nextInt();
+
+            if(ch == 1)
+            {
+                LightMotorVehicle l = new LightMotorVehicle();
+                l.getLight();
+
+                System.out.println("\nVehicle Information:");
+                l.display();
+            }
+            else
+            {
+                HeavyMotorVehicle h = new HeavyMotorVehicle();
+                h.getHeavy();
+
+                System.out.println("\nVehicle Information:");
+                h.display();
+            }
+        }
+    }
+}
+
+
+
+
+Q2) Write a JavaScript program using an arrow function to calculate the total 
+and average marks of three subjects. Display the result using template 
+literals.
+
+
+let marks1 = 80;
+let marks2 = 75;
+let marks3 = 85;
+
+// Arrow function to calculate total
+let calculateTotal = (a, b, c) => a + b + c;
+
+// Calculate total
+let total = calculateTotal(marks1, marks2, marks3);
+
+// Calculate average
+let average = total / 3;
+
+// Display result using template literals
+let result = `
+----- MARKS REPORT -----
+Marks 1  : ${marks1}
+Marks 2  : ${marks2}
+Marks 3  : ${marks3}
+Total    : ${total}
+Average  : ${average}
+------------------------
+`;
+
+console.log(result);

@@ -1,0 +1,113 @@
+Q1) Write a package game which will have 2 classes Indoor & Outdoor. Use 
+a function display () to generate the list of players for the specific game. 
+Use default & parameterized constructor.
+
+
+File 1: Indoor.java
+package game;
+
+public class Indoor
+{
+    String game;
+    String players;
+
+    // Default constructor
+    public Indoor()
+    {
+        game = "Chess";
+        players = "2 Players";
+    }
+
+    // Parameterized constructor
+    public Indoor(String g, String p)
+    {
+        game = g;
+        players = p;
+    }
+
+    public void display()
+    {
+        System.out.println("Indoor Game : " + game);
+        System.out.println("Players     : " + players);
+    }
+}
+
+
+
+File 2: Outdoor.java
+package game;
+
+public class Outdoor
+{
+    String game;
+    String players;
+
+    // Default constructor
+    public Outdoor()
+    {
+        game = "Cricket";
+        players = "11 Players";
+    }
+
+    // Parameterized constructor
+    public Outdoor(String g, String p)
+    {
+        game = g;
+        players = p;
+    }
+
+    public void display()
+    {
+        System.out.println("Outdoor Game : " + game);
+        System.out.println("Players      : " + players);
+    }
+}
+
+
+
+File 3: GameDemo.java
+import game.*;
+
+class GameDemo
+{
+    public static void main(String args[])
+    {
+        Indoor i = new Indoor();
+        Outdoor o = new Outdoor("Football", "11 Players");
+
+        System.out.println("Indoor Game Details:");
+        i.display();
+
+        System.out.println("\nOutdoor Game Details:");
+        o.display();
+    }
+}
+
+
+
+
+Q2) Write a JavaScript program using an arrow function to calculate the total 
+price of a product. Display the bill using template literals and string 
+interpolation.
+
+
+let product = "Laptop";
+let price = 50000;
+let quantity = 2;
+
+// Arrow function to calculate total price
+let calculateTotal = (price, quantity) => price * quantity;
+
+let total = calculateTotal(price, quantity);
+
+// Display bill using template literals
+let bill = `
+------ PRODUCT BILL ------
+Product  : ${product}
+Price    : ₹${price}
+Quantity : ${quantity}
+Total    : ₹${total}
+--------------------------
+`;
+
+console.log(bill);

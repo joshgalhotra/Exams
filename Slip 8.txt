@@ -1,0 +1,79 @@
+Q1) Write a program which define class Employee with data member as id, 
+name and salary Store the information of ‘n’ employees and display the 
+name of employee having maximum salary (Use array of object)
+
+
+class Employee
+{
+    int id;
+    String name;
+    double salary;
+
+    Employee(int id, String name, double salary)
+    {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of employees: ");
+        int n = sc.nextInt();
+
+        Employee e[] = new Employee[n];
+
+        for(int i = 0; i < n; i++)
+        {
+            System.out.println("\nEnter details of Employee " + (i + 1));
+
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+
+            System.out.print("Enter Name: ");
+            String name = sc.next();
+
+            System.out.print("Enter Salary: ");
+            double salary = sc.nextDouble();
+
+            e[i] = new Employee(id, name, salary);
+        }
+
+        int max = 0;
+
+        for(int i = 1; i < n; i++)
+        {
+            if(e[i].salary > e[max].salary)
+                max = i;
+        }
+
+        System.out.println("\nEmployee having Maximum Salary:");
+        System.out.println("Name: " + e[max].name);
+        System.out.println("Salary: " + e[max].salary);
+    }
+}
+
+
+
+
+
+
+Q2) Write a JavaScript program to demonstrate Arrow Functionsfor addition, 
+subtraction, multiplication and division.
+
+let a = 20;
+let b = 10;
+
+// Arrow functions
+let addition = (a, b) => a + b;
+let subtraction = (a, b) => a - b;
+let multiplication = (a, b) => a * b;
+let division = (a, b) => a / b;
+
+// Display results
+console.log("Addition = " + addition(a, b));
+console.log("Subtraction = " + subtraction(a, b));
+console.log("Multiplication = " + multiplication(a, b));
+console.log("Division = " + division(a, b));

@@ -1,0 +1,69 @@
+Q1) Write a Java program to accept a file name from the user and count the 
+number of characters, words, and lines present in the file.
+
+
+import java.io.*;
+import java.util.*;
+
+public class FileCount {
+    public static void main(String[] args) throws Exception {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter file name: ");
+        String fileName = sc.nextLine();
+
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+
+        int characters = 0;
+        int words = 0;
+        int lines = 0;
+        String line;
+
+        while ((line = br.readLine()) != null) {
+            lines++;
+            characters += line.length();
+
+            String[] w = line.trim().split("\\s+");
+
+            if (!line.trim().isEmpty()) {
+                words += w.length;
+            }
+        }
+
+        br.close();
+
+        System.out.println("Characters = " + characters);
+        System.out.println("Words = " + words);
+        System.out.println("Lines = " + lines);
+    }
+}
+
+
+
+Q2) Write a JavaScript program using async/await to simulate user login. If 
+the username and password are correct, display a success message; 
+otherwise, handle the error using try-catch.
+
+
+function login(username, password) {
+    return new Promise((resolve, reject) => {
+
+        if (username === "admin" && password === "1234") {
+            resolve("Login Successful");
+        } else {
+            reject("Invalid Username or Password");
+        }
+    });
+}
+
+async function checkLogin() {
+    try {
+        let message = await login("admin", "1234");
+        console.log(message);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+checkLogin();

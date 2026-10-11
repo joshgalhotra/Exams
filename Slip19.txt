@@ -1,0 +1,87 @@
+Q1) Write a Java program that defines an interface Calculator containing 
+methods add() and subtract() and implements it in class SimpleCalc.
+
+
+interface Calculator {
+    void add(int a, int b);
+    void subtract(int a, int b);
+}
+
+class SimpleCalc implements Calculator {
+
+    public void add(int a, int b) {
+        System.out.println("Addition = " + (a + b));
+    }
+
+    public void subtract(int a, int b) {
+        System.out.println("Subtraction = " + (a - b));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        SimpleCalc c = new SimpleCalc();
+
+        c.add(20, 10);
+        c.subtract(20, 10);
+    }
+}
+
+
+
+
+
+Q2) Write a Node.js program to perform directory management operations 
+such as creating, listing, renaming and deleting directories. Also 
+demonstrate JSON parsing and writing structured JSON data.
+
+
+const fs = require('fs');
+
+// 1. Create Directory
+fs.mkdirSync('MyFolder');
+console.log("Directory created");
+
+// 2. Create another directory
+fs.mkdirSync('TestFolder');
+console.log("TestFolder created");
+
+// 3. List Directories
+let files = fs.readdirSync('.');
+console.log("Directory List:");
+console.log(files);
+
+// 4. Rename Directory
+fs.renameSync('TestFolder', 'NewFolder');
+console.log("Directory renamed");
+
+// 5. Delete Directory
+fs.rmdirSync('NewFolder');
+console.log("Directory deleted");
+
+
+// JSON Parsing
+let jsonData = '{"name":"Sangram","age":21,"course":"BCS"}';
+
+let student = JSON.parse(jsonData);
+
+console.log("\nJSON Data:");
+console.log("Name:", student.name);
+console.log("Age:", student.age);
+console.log("Course:", student.course);
+
+
+// Writing structured JSON data
+let data = {
+    id: 101,
+    name: "Sangram",
+    course: "BCS",
+    marks: 85
+};
+
+let jsonString = JSON.stringify(data, null, 2);
+
+fs.writeFileSync('student.json', jsonString);
+
+console.log("\nJSON data written to student.json");

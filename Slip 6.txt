@@ -1,0 +1,90 @@
+Q1) Write a class Driver with attributes license_no, name, address and age. 
+Initialize values through the parameterized constructor. If age of Driver 
+is less than 18 then user-defined exception should be generated —Age 
+is below 18 years—
+
+
+class AgeException extends Exception
+{
+    AgeException(String msg)
+    {
+        super(msg);
+    }
+}
+
+class Driver
+{
+    int license_no;
+    String name, address;
+    int age;
+
+    Driver(int license_no, String name, String address, int age)
+    {
+        this.license_no = license_no;
+        this.name = name;
+        this.address = address;
+        this.age = age;
+    }
+
+    void checkAge() throws AgeException
+    {
+        if(age < 18)
+            throw new AgeException("Age is below 18 years");
+        else
+            System.out.println("Driver is eligible.");
+    }
+
+    public static void main(String args[])
+    {
+        Driver d = new Driver(101, "Sangram", "Nashik", 17);
+
+        try
+        {
+            d.checkAge();
+        }
+        catch(AgeException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+
+Q2) Create an unordered list of Programming Language names and apply 
+different styles to the first and last list items.(Use :first-child and :last-
+child)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programming Languages</title>
+
+    <style>
+        li:first-child {
+            color: red;
+            font-size: 25px;
+        }
+
+        li:last-child {
+            color: blue;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Programming Languages</h1>
+
+    <ul>
+        <li>Java</li>
+        <li>Python</li>
+        <li>C</li>
+        <li>C++</li>
+        <li>JavaScript</li>
+    </ul>
+
+</body>
+</html>

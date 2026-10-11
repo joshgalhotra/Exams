@@ -1,0 +1,161 @@
+Q1) Write a Java Program to Display Armstrong Numbers Between range. 
+Accept range from user.
+
+import java.util.*;
+
+class Armstrong
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+
+        int start, end;
+
+        System.out.print("Enter starting number: ");
+        start = sc.nextInt();
+
+        System.out.print("Enter ending number: ");
+        end = sc.nextInt();
+
+        System.out.println("Armstrong numbers are:");
+
+        for(int n = start; n <= end; n++)
+        {
+            int num = n;
+            int sum = 0;
+
+            while(num > 0)
+            {
+                int r = num % 10;
+                sum = sum + (r * r * r);
+                num = num / 10;
+            }
+
+            if(sum == n)
+            {
+                System.out.print(n + " ");
+            }
+        }
+    }
+}
+
+
+
+
+Q2) Design a Student Registration Form using HTML5 and CSS3 and apply 
+appropriate HTML5 validation attributes.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration Form</title>
+
+<style>
+body {
+    background-color: pink;
+    font-family: Arial;
+}
+
+form {
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: lightpink;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+    margin: 7px;
+}
+
+input, select, textarea {
+    padding: 5px;
+}
+
+button {
+    padding: 7px 20px;
+}
+</style>
+</head>
+
+<body>
+
+<form>
+
+<h1>Student Registration Form</h1>
+
+<label>Roll No:</label>
+<input type="number" required>
+<br>
+
+<label>Student Name:</label>
+<input type="text" minlength="3" maxlength="20" required>
+<br>
+
+<label>Father's Name:</label>
+<input type="text" required>
+<br>
+
+<label>Date of Birth:</label>
+<input type="date" required>
+<br>
+
+<label>Mobile No:</label>
+<input type="tel" pattern="[0-9]{10}" required>
+<br>
+
+<label>Email ID:</label>
+<input type="email" required>
+<br>
+
+<label>Password:</label>
+<input type="password" minlength="8" required>
+<br>
+
+<label>Gender:</label>
+<input type="radio" name="gender" required> Male
+<input type="radio" name="gender"> Female
+<br>
+
+<label>Department:</label>
+<input type="checkbox"> CSE
+<input type="checkbox"> IT
+<input type="checkbox"> ECE
+<input type="checkbox"> Civil
+<br>
+
+<label>Course:</label>
+<select required>
+    <option value="">Select Course</option>
+    <option>B.Sc. CS</option>
+    <option>BCA</option>
+    <option>B.Sc. IT</option>
+</select>
+<br>
+
+<label>Student Photo:</label>
+<input type="file" accept="image/*">
+<br>
+
+<label>City:</label>
+<input type="text" required>
+<br>
+
+<label>Address:</label>
+<textarea rows="4" required></textarea>
+<br>
+
+<center>
+<button type="submit">Register</button>
+</center>
+
+</form>
+
+</body>
+</html>

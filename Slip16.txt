@@ -1,0 +1,114 @@
+Q1) Write a program using interface, create a class Product (product_id, 
+product_name, product_cost, product_quantity) default and 
+parameterized constructor. Create objects of class product and display the 
+contents of each object and Also display the object count.
+
+
+interface ProductInterface {
+    void display();
+}
+
+class Product implements ProductInterface {
+    int product_id;
+    String product_name;
+    double product_cost;
+    int product_quantity;
+
+    static int count = 0;
+
+    // Default Constructor
+    Product() {
+        product_id = 0;
+        product_name = "Unknown";
+        product_cost = 0;
+        product_quantity = 0;
+        count++;
+    }
+
+    // Parameterized Constructor
+    Product(int id, String name, double cost, int quantity) {
+        product_id = id;
+        product_name = name;
+        product_cost = cost;
+        product_quantity = quantity;
+        count++;
+    }
+
+    // Display method
+    public void display() {
+        System.out.println("Product ID: " + product_id);
+        System.out.println("Product Name: " + product_name);
+        System.out.println("Product Cost: " + product_cost);
+        System.out.println("Product Quantity: " + product_quantity);
+        System.out.println("----------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Product p1 = new Product();
+        Product p2 = new Product(101, "Laptop", 50000, 2);
+        Product p3 = new Product(102, "Mouse", 500, 5);
+
+        p1.display();
+        p2.display();
+        p3.display();
+
+        System.out.println("Total Object Count: " + Product.count);
+    }
+}
+
+
+
+
+
+Q2) Write a Node.js program using the fs module to perform file operations 
+asynchronously.
+
+
+const fs = require('fs');
+
+// Write file asynchronously
+fs.writeFile('abc.txt', 'Hello Node.js', (err) => {
+
+    if (err) {
+        console.log("Error:", err);
+        return;
+    }
+
+    console.log("File written successfully.");
+
+    // Read file asynchronously
+    fs.readFile('abc.txt', 'utf8', (err, data) => {
+
+        if (err) {
+            console.log("Error:", err);
+            return;
+        }
+
+        console.log("File Content:", data);
+
+        // Append data asynchronously
+        fs.appendFile('abc.txt', '\nWelcome to Node.js', (err) => {
+
+            if (err) {
+                console.log("Error:", err);
+                return;
+            }
+
+            console.log("Data appended successfully.");
+
+            // Rename file asynchronously
+            fs.rename('abc.txt', 'newfile.txt', (err) => {
+
+                if (err) {
+                    console.log("Error:", err);
+                    return;
+                }
+
+                console.log("File renamed successfully.");
+            });
+        });
+    });
+});

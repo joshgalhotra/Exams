@@ -1,0 +1,103 @@
+Q1) Write a program to define class Person with data members as 
+Personname,Aadharno, Panno. Accept information for 5 objects and 
+display appropriate information (use this keyword).
+
+
+import java.util.Scanner;
+
+class Person {
+    String Personname;
+    String Aadharno;
+    String Panno;
+
+    // Constructor using this keyword
+    Person(String Personname, String Aadharno, String Panno) {
+        this.Personname = Personname;
+        this.Aadharno = Aadharno;
+        this.Panno = Panno;
+    }
+
+    void display() {
+        System.out.println("Person Name : " + Personname);
+        System.out.println("Aadhar No   : " + Aadharno);
+        System.out.println("PAN No      : " + Panno);
+        System.out.println("----------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Person[] p = new Person[5];
+
+        for (int i = 0; i < 5; i++) {
+
+            System.out.println("Enter details of Person " + (i + 1));
+
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Aadhar No: ");
+            String aadhar = sc.nextLine();
+
+            System.out.print("Enter PAN No: ");
+            String pan = sc.nextLine();
+
+            p[i] = new Person(name, aadhar, pan);
+        }
+
+        System.out.println("\n--- Person Details ---");
+
+        for (int i = 0; i < 5; i++) {
+            p[i].display();
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+
+
+Q2) Write a Node.js program to read a JSON file, modify selected properties 
+of the JSON object, and write the updated JSON data back to the file 
+using the fs module.
+
+
+const fs = require('fs');
+
+// Read JSON file
+fs.readFile('student.json', 'utf8', (err, data) => {
+
+    if (err) {
+        console.log("Error reading file:", err);
+        return;
+    }
+
+    // Convert JSON string into object
+    let student = JSON.parse(data);
+
+    // Modify selected properties
+    student.name = "Sangram";
+    student.marks = 90;
+    student.course = "BCS";
+
+    // Convert object back to JSON
+    let updatedData = JSON.stringify(student, null, 2);
+
+    // Write updated JSON data
+    fs.writeFile('student.json', updatedData, (err) => {
+
+        if (err) {
+            console.log("Error writing file:", err);
+            return;
+        }
+
+        console.log("JSON file updated successfully.");
+        console.log(student);
+    });
+});

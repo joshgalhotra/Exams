@@ -1,0 +1,111 @@
+Q1) Define a class MyDate(Day, Month, year) with methods to accept and 
+display a MyDateobject.Accept date as dd,mm,yyyy. Throw user defined 
+exception "InvalidDateException" if the date is invalid.
+
+
+import java.util.Scanner;
+
+class InvalidDateException extends Exception {
+    InvalidDateException(String message) {
+        super(message);
+    }
+}
+
+class MyDate {
+    int Day, Month, year;
+
+    void accept(int d, int m, int y) throws InvalidDateException {
+
+        if (m < 1 || m > 12 || d < 1 || d > 31 || y < 1) {
+            throw new InvalidDateException("Invalid Date");
+        }
+
+        if ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30) {
+            throw new InvalidDateException("Invalid Date");
+        }
+
+        if (m == 2) {
+            if (d > 29) {
+                throw new InvalidDateException("Invalid Date");
+            }
+
+            if (d == 29 && (y % 4 != 0)) {
+                throw new InvalidDateException("Invalid Date");
+            }
+        }
+
+        Day = d;
+        Month = m;
+        year = y;
+    }
+
+    void display() {
+        System.out.println("Date: " + Day + "/" + Month + "/" + year);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter date (dd mm yyyy): ");
+
+        int d = sc.nextInt();
+        int m = sc.nextInt();
+        int y = sc.nextInt();
+
+        MyDate date = new MyDate();
+
+        try {
+            date.accept(d, m, y);
+            date.display();
+        }
+        catch (InvalidDateException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+
+
+Q2) Create a Node.js program to list files in a specified directory, filter files 
+based on their extensions (such as .txt, .json and .js), and display the 
+matching file names.
+
+
+
+const fs = require('fs');
+const path = require('path');
+
+let dir = './';
+
+fs.readdir(dir, (err, files) => {
+
+    if (err) {
+        console.log("Error reading directory:", err);
+        return;
+    }
+
+    console.log("All Files:");
+    console.log(files);
+
+    // Required extensions
+    let extensions = ['.txt', '.json', '.js'];
+
+    // Filter files
+    let matchingFiles = files.filter(file => {
+        return extensions.includes(path.extname(file));
+    });
+
+    console.log("\nMatching Files:");
+
+    matchingFiles.forEach(file => {
+        console.log(file);
+    });
+});

@@ -1,0 +1,116 @@
+Q1) Define a class Student with data members student_name, student_rollno, 
+total_lectures, attended_lectures. Create an object of Student. If 
+attendance percentage is less than 75%, throw a user-defined exception 
+“Student is Not Eligible for Exam”, otherwise display student details.
+
+
+
+class AttendanceException extends Exception {
+    AttendanceException(String message) {
+        super(message);
+    }
+}
+
+class Student {
+    String student_name;
+    int student_rollno;
+    int total_lectures;
+    int attended_lectures;
+
+    Student(String name, int rollno, int total, int attended) {
+        student_name = name;
+        student_rollno = rollno;
+        total_lectures = total;
+        attended_lectures = attended;
+    }
+
+    void checkAttendance() throws AttendanceException {
+
+        double percentage =
+            (attended_lectures * 100.0) / total_lectures;
+
+        if (percentage < 75) {
+            throw new AttendanceException(
+                "Student is Not Eligible for Exam"
+            );
+        }
+
+        System.out.println("Student Name: " + student_name);
+        System.out.println("Roll No: " + student_rollno);
+        System.out.println("Total Lectures: " + total_lectures);
+        System.out.println("Attended Lectures: " + attended_lectures);
+        System.out.println("Attendance: " + percentage + "%");
+        System.out.println("Student is Eligible for Exam");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s = new Student(
+            "Sangram", 101, 100, 80
+        );
+
+        try {
+            s.checkAttendance();
+        }
+        catch (AttendanceException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+
+
+Q2) Write a Node.js program using the fs module to copy, rename and delete 
+files asynchronously. Display appropriate success and error messages.
+
+
+
+const fs = require('fs');
+
+// Create a file first
+fs.writeFile('old.txt', 'Hello Node.js', (err) => {
+
+    if (err) {
+        console.log("Error creating file:", err);
+        return;
+    }
+
+    console.log("File created successfully.");
+
+    // Copy file
+    fs.copyFile('old.txt', 'copy.txt', (err) => {
+
+        if (err) {
+            console.log("Error copying file:", err);
+            return;
+        }
+
+        console.log("File copied successfully.");
+
+        // Rename copied file
+        fs.rename('copy.txt', 'new.txt', (err) => {
+
+            if (err) {
+                console.log("Error renaming file:", err);
+                return;
+            }
+
+            console.log("File renamed successfully.");
+
+            // Delete renamed file
+            fs.unlink('new.txt', (err) => {
+
+                if (err) {
+                    console.log("Error deleting file:", err);
+                    return;
+                }
+
+                console.log("File deleted successfully.");
+            });
+        });
+    });
+});

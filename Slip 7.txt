@@ -1,0 +1,104 @@
+Q1) Write a program to create an abstract class named Shape that contains 
+two integers and an empty method named printArea(). Provide three 
+classes named Rectangle, Triangle and Circle such that each one of the 
+classes extends the class Shape. Each one of the classes contain only the 
+method printArea() that prints the area of the given shape. (use method 
+overriding).
+
+
+abstract class Shape
+{
+    int a, b;
+
+    abstract void printArea();
+}
+
+class Rectangle extends Shape
+{
+    Rectangle(int length, int breadth)
+    {
+        a = length;
+        b = breadth;
+    }
+
+    void printArea()
+    {
+        System.out.println("Area of Rectangle = " + (a * b));
+    }
+}
+
+class Triangle extends Shape
+{
+    Triangle(int base, int height)
+    {
+        a = base;
+        b = height;
+    }
+
+    void printArea()
+    {
+        System.out.println("Area of Triangle = " + (0.5 * a * b));
+    }
+}
+
+class Circle extends Shape
+{
+    Circle(int radius)
+    {
+        a = radius;
+    }
+
+    void printArea()
+    {
+        System.out.println("Area of Circle = " + (3.14 * a * a));
+    }
+}
+
+class TestShape
+{
+    public static void main(String args[])
+    {
+        Rectangle r = new Rectangle(10, 5);
+        Triangle t = new Triangle(10, 6);
+        Circle c = new Circle(7);
+
+        r.printArea();
+        t.printArea();
+        c.printArea();
+    }
+}
+
+
+
+
+
+Q2) Create a webpage using JavaScript DOM manipulation and event 
+handling with an image and a button. When the button is clicked, replace 
+the displayed image with another image.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Image</title>
+
+    <script>
+        function changeImage()
+        {
+            document.getElementById("img").src = "image2.jpg";
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Image Change Example</h1>
+
+    <img id="img" src="image1.jpg" width="300" height="200">
+
+    <br><br>
+
+    <button onclick="changeImage()">Change Image</button>
+
+</body>
+</html>

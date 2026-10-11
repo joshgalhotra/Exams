@@ -1,0 +1,54 @@
+Q1) Write a program to read the contents of “abc.txt” file. Display the 
+contents of file in uppercase as output.
+
+
+class ReadFile
+{
+    public static void main(String args[]) throws Exception
+    {
+        FileReader fr = new FileReader("abc.txt");
+
+        int ch;
+
+        System.out.println("File Contents in Uppercase:");
+
+        while((ch = fr.read()) != -1)
+        {
+            System.out.print(Character.toUpperCase((char)ch));
+        }
+
+        fr.close();
+    }
+}
+
+
+
+
+Q2) Write a JavaScript program to store student information and marks in
+variables and generate a formatted student report using template literals.
+
+
+let name = "Sangram";
+let rollNo = 101;
+let course = "BCS";
+let marks1 = 80;
+let marks2 = 75;
+let marks3 = 85;
+
+let total = marks1 + marks2 + marks3;
+let percentage = total / 3;
+
+let report = `
+----- STUDENT REPORT -----
+Name       : ${name}
+Roll No    : ${rollNo}
+Course     : ${course}
+Marks 1    : ${marks1}
+Marks 2    : ${marks2}
+Marks 3    : ${marks3}
+Total      : ${total}
+Percentage : ${percentage}%
+--------------------------
+`;
+
+console.log(report);

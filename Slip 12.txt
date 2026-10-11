@@ -1,0 +1,87 @@
+Q1) Define a “Clock” class that does the following;
+a. Accept Hours, Minutes and Seconds
+b. Check the validity of numbers
+c. Set the time to AM/PM mode
+Use the necessary constructors and methods to do the above task.
+
+import java.util.Scanner;
+
+class Clock {
+    int hours, minutes, seconds;
+
+    // Constructor
+    Clock(int h, int m, int s) {
+        hours = h;
+        minutes = m;
+        seconds = s;
+    }
+
+    // Check validity
+    boolean isValid() {
+        return (hours >= 0 && hours <= 23 &&
+                minutes >= 0 && minutes <= 59 &&
+                seconds >= 0 && seconds <= 59);
+    }
+
+    // Display AM/PM time
+    void display() {
+        if (!isValid()) {
+            System.out.println("Invalid Time");
+            return;
+        }
+
+        String period;
+        int h = hours;
+
+        if (h >= 12)
+            period = "PM";
+        else
+            period = "AM";
+
+        if (h == 0)
+            h = 12;
+        else if (h > 12)
+            h = h - 12;
+
+        System.out.printf("Time = %02d:%02d:%02d %s",
+                h, minutes, seconds, period);
+    }
+}
+
+public class ClockDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter hours: ");
+        int h = sc.nextInt();
+
+        System.out.print("Enter minutes: ");
+        int m = sc.nextInt();
+
+        System.out.print("Enter seconds: ");
+        int s = sc.nextInt();
+
+        Clock c = new Clock(h, m, s);
+        c.display();
+    }
+}
+
+
+
+
+Q2) Write a JavaScript program to swap two numbers without using a third 
+variable using array destructuring
+
+let a = 10;
+let b = 20;
+
+console.log("Before Swapping:");
+console.log("a =", a);
+console.log("b =", b);
+
+// Swap using array destructuring
+[a, b] = [b, a];
+
+console.log("After Swapping:");
+console.log("a =", a);
+console.log("b =", b);

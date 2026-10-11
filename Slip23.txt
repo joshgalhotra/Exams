@@ -1,0 +1,108 @@
+Q1) Write a program to accept a number from the user, if number is zero 
+then throw user defined exception “Number is 0” otherwise check 
+whether no is prime or not (Use static keyword)
+
+
+import java.util.Scanner;
+
+class NumberException extends Exception {
+    NumberException(String msg) {
+        super(msg);
+    }
+}
+
+class Prime {
+    static void checkPrime(int n) throws NumberException {
+
+        if (n == 0) {
+            throw new NumberException("Number is 0");
+        }
+
+        if (n < 0) {
+            System.out.println("Negative number is not prime");
+            return;
+        }
+
+        boolean flag = true;
+
+        if (n == 1) {
+            flag = false;
+        }
+
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag)
+            System.out.println(n + " is Prime");
+        else
+            System.out.println(n + " is Not Prime");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        try {
+            Prime.checkPrime(n);
+        }
+        catch (NumberException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+
+Q2) Write a Node.js program to demonstrate file statistics using fs.stat(), 
+including file size, file type, creation/access/modification information, 
+and whether the path represents a file or directory.
+
+
+
+const fs = require('fs');
+
+let filePath = 'abc.txt';
+
+fs.stat(filePath, (err, stats) => {
+
+    if (err) {
+        console.log("Error:", err);
+        return;
+    }
+
+    console.log("File Statistics");
+    console.log("----------------------");
+
+    // File size
+    console.log("File Size:", stats.size, "bytes");
+
+    // Check file or directory
+    if (stats.isFile()) {
+        console.log("Type: File");
+    }
+    else if (stats.isDirectory()) {
+        console.log("Type: Directory");
+    }
+
+    // Creation time
+    console.log("Creation Time:", stats.birthtime);
+
+    // Access time
+    console.log("Access Time:", stats.atime);
+
+    // Modification time
+    console.log("Modification Time:", stats.mtime);
+});
